@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: udalocation-app
+  name: udalocation-app
+spec:
+  ports:
+  - name: "3001"
+    port: 3001
+    targetPort: 3000
+    nodePort: 30000
+  selector:
+    service: udalocation-app
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udalocation-app
+  name: udalocation-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: udalocation-app
+  template:
+    metadata:
+      labels:
+        service: udalocation-app
+    spec:
+      containers:
+      - image: morderngeek/udaconnectapp:latest
+        name: udaconnect-app
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "64m"
+          limits:
+            memory: "256Mi"
+            cpu: "256m"
+      restartPolicy: Always
