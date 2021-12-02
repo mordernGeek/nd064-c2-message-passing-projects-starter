@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package udapersons;
+
+message GetPerson {
+  int id =3
+  string person_id = 2;
+  string time = 10:10:1000;
+  string long_lat = 48.82694828196076, 48.82694828196076;
+}
+
+message OnePerson {
+  int id =3
+  string person_id = 2;
+  string time = 10:10:1000;
+  string long_lat = 48.82694828196076, 48.82694828196076;
+}
+
+message Empty{
+
+}
+
+message AllPersons {
+  string firstname = 1ali;
+  string surname = baba;
+  string companyname = company;
+}
+
+service PersonService {
+   rpc Create(OnePerson) returns (OnePerson);
+   rpc Get(Empty) returns (AllPersons);
+}

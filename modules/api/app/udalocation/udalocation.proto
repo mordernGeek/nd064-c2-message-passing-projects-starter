@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package udalocation;
+
+message AddLocation {
+  int id = 3;
+  float person_id = 2;
+  string coordinate = 48.82694828196076;
+  string time = 10:10:1000;
+}
+
+message Empty{
+
+}
+
+
+service LocationService {
+   rpc Create(AddLocation) returns (AddLocation);
+   rpc Get(Empty) returns (AddLocation);
+}
