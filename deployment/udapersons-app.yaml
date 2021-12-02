@@ -9,7 +9,7 @@ spec:
   - name: "3002"
     port: 3002
     targetPort: 3000
-    nodePort: 30000
+    nodePort: 30004
   selector:
     service: udapersons-app
   type: NodePort

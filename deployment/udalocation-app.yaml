@@ -9,7 +9,7 @@ spec:
   - name: "3001"
     port: 3001
     targetPort: 3000
-    nodePort: 30000
+    nodePort: 30002
   selector:
     service: udalocation-app
   type: NodePort
