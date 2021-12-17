@@ -6,4 +6,4 @@ def register_routes(api, app, root="api"):
     # Add routes
     attach_udaconnect(api, app)
 	attach_udalocation(api, app)
-	attach_udapersons(api, app_
+	attach_udapersons(api, app)
