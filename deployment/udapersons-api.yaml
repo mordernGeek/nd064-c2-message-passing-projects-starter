@@ -31,7 +31,7 @@ spec:
         service: udapersons-api
     spec:
       containers:
-      - image: morderngeek/u_persons:latest
+      - image: morderngeek/udaconnect:latest
         name: udapersons-api
         imagePullPolicy: Always
         env:

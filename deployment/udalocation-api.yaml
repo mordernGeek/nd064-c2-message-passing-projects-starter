@@ -31,7 +31,7 @@ spec:
         service: udalocation-api
     spec:
       containers:
-      - image: morderngeek/u_locate:latest
+      - image: morderngeek/udaconnectapi:latest
         name: udalocation-api
         imagePullPolicy: Always
         env:
