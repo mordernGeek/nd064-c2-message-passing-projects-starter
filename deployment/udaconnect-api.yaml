@@ -1,4 +1,3 @@
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -32,8 +31,7 @@ spec:
         service: udaconnect-api
     spec:
       containers:
-      - image: morderngeek/udaconnectapi
-:latest
+      - image: morderngeek/udaconnectapi:latest
         name: udaconnect-api
         imagePullPolicy: Always
         env:
