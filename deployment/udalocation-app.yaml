@@ -31,7 +31,7 @@ spec:
         service: udalocation-app
     spec:
       containers:
-      - image: morderngeek/udaconnectapp:latest
+      - image: morderngeek/u_locate:latest
         name: udaconnect-app
         imagePullPolicy: Always
         resources:
