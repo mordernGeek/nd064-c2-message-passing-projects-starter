@@ -1,12 +1,15 @@
+
+
+
 syntax = "proto3";
 
 package udapersons;
 
 message GetPerson {
-  int id = 3;
-  string person_id = 2;
-  string time = 10:10:1000;
-  string long_lat = 48.82694828196076, 48.82694828196076;
+  int32 id = 3;
+  string firstname = 6;
+  string lastname = 2;
+  string company = 4;
 }
 
 message Empty {
