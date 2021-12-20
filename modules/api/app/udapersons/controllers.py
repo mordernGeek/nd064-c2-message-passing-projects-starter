@@ -1,6 +1,4 @@
 from datetime import datetime
-udapersons
-
 from app.udapersons.models import Person
 from app.udapersons.schemas import (
     PersonSchema,
