@@ -5,10 +5,13 @@ from app.udalocation.schemas import (
     LocationSchema,
 )
 from app.udalocation.services import LocationService
-from flask import request
+from flask import request, g, Response
 from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
 from typing import Optional, List
+
+from Kafka import KafkaProducer
+
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -16,6 +19,19 @@ api = Namespace("udalocation", description="Connections via geolocation.")  # no
 
 
 # TODO: This needs better exception handling
+# integrating with apache kafka 
+
+@app.before_request
+
+def before_request():
+    #Creating my kafka producer
+
+    TOPIC_NAME = "locations"
+    KAFKA_SERVER = 'localhost:9092' #need to assert this, shouldn't my server be where i write the logic?
+    producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
+    g.kafka_producer = producer 
+
+
 
 
 @api.route("/locations")
@@ -27,7 +43,8 @@ class LocationResource(Resource):
     def post(self) -> Location:
         request.get_json()
         location: Location = LocationService.create(request.get_json())
-        return location
+        return Response(status=202)
+        #return location
 
     @responds(schema=LocationSchema)
     def get(self, location_id) -> Location:

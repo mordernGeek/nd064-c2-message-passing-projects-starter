@@ -1,8 +1,9 @@
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, List
-
+from .controllers import g
 from app import db
+from json import dumps
 from app.udalocation.models import Connection, Location, Person
 from app.udalocation.schemas import ConnectionSchema, LocationSchema, PersonSchema
 from geoalchemy2.functions import ST_AsText, ST_Point
@@ -39,6 +40,10 @@ class LocationService:
         new_location.coordinate = ST_Point(location["latitude"], location["longitude"])
         db.session.add(new_location)
         db.session.commit()
+
+        kafka_data = json.dump(new_location).encode()
+        kafka_data = g.kafka.producer
+        kafka_producer.send("location", kafka_data)
 
         return new_location
 

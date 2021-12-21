@@ -28,7 +28,10 @@ class PersonsResource(Resource):
     @responds(schema=PersonSchema, many=True)
     def get(self) -> List[Person]:
         persons: List[Person] = PersonService.retrieve_all()
-        return persons
+        if persons is None:
+            print ('unconnected persons list')
+        else:
+            return persons
 
 
 @api.route("/persons/<person_id>")
@@ -37,6 +40,10 @@ class PersonResource(Resource):
     @responds(schema=PersonSchema)
     def get(self, person_id) -> Person:
         person: Person = PersonService.retrieve(person_id)
-        return person
+        if person is None:
+            print ('not found person-item')
+        else:
+            return person
+        
 
 
