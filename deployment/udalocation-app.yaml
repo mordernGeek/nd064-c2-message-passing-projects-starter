@@ -10,6 +10,11 @@ spec:
     port: 3001
     targetPort: 3000
     nodePort: 30002
+  - name: zookeeper
+    port: 2181
+    protocol: TCP
+    targetPort: 2181
+    nodePort: 30002  
   selector:
     service: udalocation-app
   type: NodePort
@@ -31,6 +36,16 @@ spec:
         service: udalocation-app
     spec:
       containers:
+      - name:zoo
+        image:bitnami/zookeeper
+        ports:
+        - containerPort: 2181
+        env:
+        - name: ZOOKEEPER_ID
+          value: "1"
+        - name: ZOOKEEPER_SERVER_1
+          value: zoo
+                  
       - image: morderngeek/u_locate:latest
         name: udaconnect-app
         imagePullPolicy: Always
