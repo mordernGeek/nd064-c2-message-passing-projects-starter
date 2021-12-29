@@ -8,7 +8,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    app: kafka
+    app: udalocation-app
   template:
     metadata:
       labels:
