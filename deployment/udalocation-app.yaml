@@ -14,7 +14,7 @@ spec:
     port: 2181
     protocol: TCP
     targetPort: 2181
-    nodePort: 30002  
+    nodePort: 30010  
   selector:
     service: udalocation-app
   type: NodePort
@@ -36,7 +36,7 @@ spec:
         service: udalocation-app
     spec:
       containers:
-      - image: morderngeek/u_connect:latest
+      - image: morderngeek/udalocation:latest
         name: udaconnect-app
         imagePullPolicy: Always
         resources:

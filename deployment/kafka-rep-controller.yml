@@ -15,11 +15,12 @@ spec:
         app: udalocation-app
     spec:
       containers:
--
+        -
           command:
             - zookeeper-server-start.sh
             - /config/zookeeper.properties
           image: "wurstmeister/kafka"
+          name: udalocation-app
           ports:
             -
               containerPort: 2181
