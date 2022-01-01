@@ -1,41 +1,23 @@
-Skip to content
-udacity
-/
-nd064-c2-message-passing-exercises
-Public
-Code
-Issues
-Pull requests
-4
-Actions
-Projects
-More
-nd064-c2-message-passing-exercises/lesson-3-implementing-message-passing/grpc-demo/main.py /
-@leejustin
-leejustin Add Lesson 3 content
- History
- 1 contributor
- 36 lines (27 sloc)  834 Bytes
 import time
 from concurrent import futures
 
 import grpc
-import item_pb2
-import item_pb2_grpc
+import udaperson_pb2
+import udaperson_pb2_grpc
 
 
-class ItemServicer(item_pb2_grpc.ItemServiceServicer):
+class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
     def Create(self, request, context):
 
-        request_value = {
-            "name": request.name,
-            "brand_name": request.brand_name,
+        new_entry = {
             "id": int(request.id),
-            "weight": request.weight,
+			"firstname": request.name
+			"lastname": request.surname
+			"company": request.companyname,
         }
-        print(request_value)
+        print(new_entry)
 
-        return item_pb2.ItemMessage(**request_value)
+        return udaperson_pb2.GetPerson(**new_entry)
 
 
 # Initialize gRPC server
@@ -43,7 +25,7 @@ server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
 item_pb2_grpc.add_ItemServiceServicer_to_server(ItemServicer(), server)
 
 
-print("Server starting on port 5005...")
+print("grpc server functional...")
 server.add_insecure_port("[::]:5005")
 server.start()
 # Keep thread alive
@@ -53,4 +35,3 @@ try:
 except KeyboardInterrupt:
     server.stop(0)
 
-Loading complete
