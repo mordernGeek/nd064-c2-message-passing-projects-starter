@@ -1,0 +1,19 @@
+Understanding my internal service architecture 
+
+
+The services have been split internally within the api so the frontend communicates with them via the same channel
+For the services to commnunicate with one another.
+Each one of them have a unique dockerfile with their requirements.txt changed as requested 
+
+udalocation has been designed to use kafka because as it is a location app, user data will change frequently and it will handle lots of data that kafka is best suited for, grpc is not used for this because of 
+its sensitive nature to data, especially when there are network issues.
+I also used flush so users can get locations in real time
+
+Udapersons is designed with grpc as in my opinion it is well suited for the data types that udaperson provides 
+
+Lastly since there is no urgency for udaconnect, after receiving data from both Udalocation and Udapersons, connections are made it can comfortably use a restful API to send feedback to both services and possibly feed the database.
+
+
+Udalocation uses Kafka to send to the udaconect standalone service
+Udapersons uses grpcio to send data to the udaconnect standalone service 
+Udaconnect communicates with both Udalocation and Udapersons via a rest api
