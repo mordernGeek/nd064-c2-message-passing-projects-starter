@@ -11,8 +11,8 @@ class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
 
         new_entry = {
             "id": int(request.id),
-			"firstname": request.name
-			"lastname": request.surname
+			"firstname": request.name,
+			"lastname": request.surname,
 			"company": request.companyname,
         }
         print(new_entry)
@@ -22,7 +22,7 @@ class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
 
 # Initialize gRPC server
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
-item_pb2_grpc.add_ItemServiceServicer_to_server(ItemServicer(), server)
+udaperson_pb2_grpc.add_PersonServiceServicer_to_server(PersonService(), server)
 
 
 print("grpc server functional...")
