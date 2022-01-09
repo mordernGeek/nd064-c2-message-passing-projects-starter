@@ -9,7 +9,7 @@ class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
 
 
     def Get(self, request, context):
-	fetch_entry = udaperson_pb2.GetPerson(
+        fetch_entry = udaperson_pb2.GetPerson(
 		id = 20, 
 		firstname = "upland",
 		lastname = "engineering",
@@ -17,7 +17,7 @@ class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
 	)
 		
         result = udaperson_pb2.AllPersons()
-	result.all.extend([fetch_entry])
+        result.all.extend([fetch_entry])
         return result 
    
    
@@ -35,18 +35,19 @@ class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
 	
 		
 # Initialize gRPC server
-def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
-    udaperson_pb2_grpc.add_PersonServiceServicer_to_server(PersonService(), server)
-    print("grpc server functional...")
-    server.add_insecure_port("[::]:50051")
-    server.start()
-    try:
-        while True:
-            time.sleep(86400)
+    def serve():
+        server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
+        udaperson_pb2_grpc.add_PersonServiceServicer_to_server(PersonService(), server)
+        print("grpc server functional...")
+        server.add_insecure_port("[::]:50051")
+        server.start()
+
+        try:
+            while True:
+                time.sleep(86400)
             
-    except KeyboardInterrupt:
-        server.stop(0)
+            
+        except KeyboardInterrupt:
+            server.stop(0)
         
-if __name__ == "__main__":
-    serve()
+
