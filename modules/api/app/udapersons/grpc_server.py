@@ -9,15 +9,16 @@ class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
 
 
     def Get(self, request, context):
-		fetch_entry = udaperson_pb2.GetPerson(
-		id = 20 
-		firstname = "upland"
-		lastname = "engineering"
+	fetch_entry = udaperson_pb2.GetPerson(
+		id = 20, 
+		firstname = "upland",
+		lastname = "engineering",
 		company = "limited"
-		)
+	)
 		
-	    result = udaperson_pb2.AllPersons()
-	    return result 
+        result = udaperson_pb2.AllPersons()
+	result.all.extend([fetch_entry])
+        return result 
    
    
     def Create(self, request, context):
