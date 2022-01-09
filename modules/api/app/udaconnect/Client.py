@@ -1,7 +1,8 @@
-import grpc
-import udaperson_pb2
-import udaperson_pb2_grpc
-from kafka import KafkaConsumer
+#import grpc
+#import udaperson_pb2
+#import udaperson_pb2_grpc
+#from kafka import KafkaConsumer
+import flask
 from flask import request
 
 
@@ -9,26 +10,26 @@ from flask import request
 #REST, grpc and kafka are implemented separately here
 
 
-TOPIC_NAME = 'location'
+#TOPIC_NAME = 'location'
 
-consumer = KafkaConsumer(TOPIC_NAME)
-for message in consumer:
-    print (message)
+#consumer = KafkaConsumer(TOPIC_NAME)
+#for message in consumer:
+#    print (message)
 
 
 print("sending random message to udapersons...")
 
-channel = grpc.insecure_channel("localhost:5007") #kindly confirm this is the right port
-feed = udaperson_pb2_grpc.PersonServiceStub(channel)
+#channel = grpc.insecure_channel("localhost:5005") #kindly confirm this is the right port
+#feed = udaperson_pb2_grpc.PersonServiceStub(channel)
 
-person = udaperson_pb2.GetPerson(
-  id = "320",
+#person = udaperson_pb2.GetPerson(
+  id = 320,
   firstname = "Olai",
   lastname = "Wdsvl",
   company = "Uel",
-)
+#)
 
-response = feed.Create(person)
+#response = feed.Create(person)
 
 
 

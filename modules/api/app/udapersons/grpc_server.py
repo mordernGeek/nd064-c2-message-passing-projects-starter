@@ -1,37 +1,51 @@
 import time
 from concurrent import futures
-
 import grpc
 import udaperson_pb2
 import udaperson_pb2_grpc
 
 
 class PersonService(udaperson_pb2_grpc.PersonServiceServicer):
-    def Create(self, request, context):
 
+
+    def Get(self, request, context):
+		fetch_entry = udaperson_pb2.GetPerson(
+		id = 20 
+		firstname = "upland"
+		lastname = "engineering"
+		company = "limited"
+		)
+		
+	    result = udaperson_pb2.AllPersons()
+	    return result 
+   
+   
+    def Create(self, request, context):
         new_entry = {
             "id": int(request.id),
-			"firstname": request.name
-			"lastname": request.surname
-			"company": request.companyname,
+            "firstname": request.name,
+            "lastname": request.surname,
+            "company": request.companyname,
         }
         print(new_entry)
-
+		
         return udaperson_pb2.GetPerson(**new_entry)
-
-
+		
+	
+		
 # Initialize gRPC server
-server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
-item_pb2_grpc.add_ItemServiceServicer_to_server(ItemServicer(), server)
-
-
-print("grpc server functional...")
-server.add_insecure_port("[::]:5005")
-server.start()
-# Keep thread alive
-try:
-    while True:
-        time.sleep(86400)
-except KeyboardInterrupt:
-    server.stop(0)
-
+def serve():
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
+    udaperson_pb2_grpc.add_PersonServiceServicer_to_server(PersonService(), server)
+    print("grpc server functional...")
+    server.add_insecure_port("[::]:50051")
+    server.start()
+    try:
+        while True:
+            time.sleep(86400)
+            
+    except KeyboardInterrupt:
+        server.stop(0)
+        
+if __name__ == "__main__":
+    serve()
