@@ -22,7 +22,7 @@ channel = grpc.insecure_channel("localhost:5005") #kindly confirm this is the ri
 feed = udaperson_pb2_grpc.PersonServiceStub(channel)
 
 person = udaperson_pb2.GetPerson(
-  id = "320",
+  id = 320,
   firstname = "Olai",
   lastname =" Wdsvl",
   company = "Uel",
