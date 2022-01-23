@@ -17,7 +17,7 @@ class PersonServiceStub(object):
         self.Create = channel.unary_unary(
                 '/udapersons.PersonService/Create',
                 request_serializer=udaperson__pb2.GetPerson.SerializeToString,
-                response_deserializer=udaperson__pb2.GetPerson.FromString,
+                response_deserializer=udaperson__pb2.FetchPerson.FromString,
                 )
         self.Get = channel.unary_unary(
                 '/udapersons.PersonService/Get',
@@ -47,7 +47,7 @@ def add_PersonServiceServicer_to_server(servicer, server):
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
                     request_deserializer=udaperson__pb2.GetPerson.FromString,
-                    response_serializer=udaperson__pb2.GetPerson.SerializeToString,
+                    response_serializer=udaperson__pb2.FetchPerson.SerializeToString,
             ),
             'Get': grpc.unary_unary_rpc_method_handler(
                     servicer.Get,
@@ -77,7 +77,7 @@ class PersonService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/udapersons.PersonService/Create',
             udaperson__pb2.GetPerson.SerializeToString,
-            udaperson__pb2.GetPerson.FromString,
+            udaperson__pb2.FetchPerson.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

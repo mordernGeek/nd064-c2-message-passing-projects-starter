@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0fudaperson.proto\x12\nudapersons\"M\n\tGetPerson\x12\n\n\x02id\x18\x03 \x01(\x05\x12\x11\n\tfirstname\x18\x06 \x01(\t\x12\x10\n\x08lastname\x18\x02 \x01(\t\x12\x0f\n\x07\x63ompany\x18\x04 \x01(\t\"\x07\n\x05\x45mpty\"0\n\nAllPersons\x12\"\n\x03\x61ll\x18\x01 \x03(\x0b\x32\x15.udapersons.GetPerson2y\n\rPersonService\x12\x36\n\x06\x43reate\x12\x15.udapersons.GetPerson\x1a\x15.udapersons.GetPerson\x12\x30\n\x03Get\x12\x11.udapersons.Empty\x1a\x16.udapersons.AllPersonsb\x06proto3'
+  serialized_pb=b'\n\x0fudaperson.proto\x12\nudapersons\"M\n\tGetPerson\x12\n\n\x02id\x18\x03 \x01(\x05\x12\x11\n\tfirstname\x18\x02 \x01(\t\x12\x10\n\x08lastname\x18\t \x01(\t\x12\x0f\n\x07\x63ompany\x18\x04 \x01(\t\"O\n\x0b\x46\x65tchPerson\x12\n\n\x02id\x18\x05 \x01(\x05\x12\x11\n\tfirstname\x18\x06 \x01(\t\x12\x10\n\x08lastname\x18\x07 \x01(\t\x12\x0f\n\x07\x63ompany\x18\x08 \x01(\t\"\x07\n\x05\x45mpty\"0\n\nAllPersons\x12\"\n\x03\x61ll\x18\x01 \x03(\x0b\x32\x15.udapersons.GetPerson2{\n\rPersonService\x12\x38\n\x06\x43reate\x12\x15.udapersons.GetPerson\x1a\x17.udapersons.FetchPerson\x12\x30\n\x03Get\x12\x11.udapersons.Empty\x1a\x16.udapersons.AllPersonsb\x06proto3'
 )
 
 
@@ -42,14 +42,14 @@ _GETPERSON = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='firstname', full_name='udapersons.GetPerson.firstname', index=1,
-      number=6, type=9, cpp_type=9, label=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='lastname', full_name='udapersons.GetPerson.lastname', index=2,
-      number=2, type=9, cpp_type=9, label=1,
+      number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -78,6 +78,59 @@ _GETPERSON = _descriptor.Descriptor(
 )
 
 
+_FETCHPERSON = _descriptor.Descriptor(
+  name='FetchPerson',
+  full_name='udapersons.FetchPerson',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='udapersons.FetchPerson.id', index=0,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firstname', full_name='udapersons.FetchPerson.firstname', index=1,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='lastname', full_name='udapersons.FetchPerson.lastname', index=2,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='company', full_name='udapersons.FetchPerson.company', index=3,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=110,
+  serialized_end=189,
+)
+
+
 _EMPTY = _descriptor.Descriptor(
   name='Empty',
   full_name='udapersons.Empty',
@@ -98,8 +151,8 @@ _EMPTY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=110,
-  serialized_end=117,
+  serialized_start=191,
+  serialized_end=198,
 )
 
 
@@ -130,12 +183,13 @@ _ALLPERSONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=119,
-  serialized_end=167,
+  serialized_start=200,
+  serialized_end=248,
 )
 
 _ALLPERSONS.fields_by_name['all'].message_type = _GETPERSON
 DESCRIPTOR.message_types_by_name['GetPerson'] = _GETPERSON
+DESCRIPTOR.message_types_by_name['FetchPerson'] = _FETCHPERSON
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['AllPersons'] = _ALLPERSONS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -146,6 +200,13 @@ GetPerson = _reflection.GeneratedProtocolMessageType('GetPerson', (_message.Mess
   # @@protoc_insertion_point(class_scope:udapersons.GetPerson)
   })
 _sym_db.RegisterMessage(GetPerson)
+
+FetchPerson = _reflection.GeneratedProtocolMessageType('FetchPerson', (_message.Message,), {
+  'DESCRIPTOR' : _FETCHPERSON,
+  '__module__' : 'udaperson_pb2'
+  # @@protoc_insertion_point(class_scope:udapersons.FetchPerson)
+  })
+_sym_db.RegisterMessage(FetchPerson)
 
 Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
   'DESCRIPTOR' : _EMPTY,
@@ -170,8 +231,8 @@ _PERSONSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=169,
-  serialized_end=290,
+  serialized_start=250,
+  serialized_end=373,
   methods=[
   _descriptor.MethodDescriptor(
     name='Create',
@@ -179,7 +240,7 @@ _PERSONSERVICE = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_GETPERSON,
-    output_type=_GETPERSON,
+    output_type=_FETCHPERSON,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
